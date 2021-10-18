@@ -54,5 +54,9 @@ RUN yum install -y dnf dnf-plugins-core patch python-requests python3 rsync && \
 # Copy the entrypoint
 ADD contrib/bin/* /usr/local/bin/
 
+# Fix & drop privileges
+RUN chown -R 1001:0 $HOME && chmod -R g+rw $HOME
+USER 1001
+
 # Run the Jenkins JNLP client
 ENTRYPOINT ["/usr/bin/dumb-init", "--", "/usr/local/bin/run-jnlp-client"]
