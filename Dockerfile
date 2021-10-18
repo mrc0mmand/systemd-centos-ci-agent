@@ -47,7 +47,7 @@ RUN yum install -y centos-release-scl-rh epel-release && \
 # Install additional tools/dependencies:
 #   * python3 & cpp-coveralls for Coveralls coverage reports
 #   * dnf,rsync, & patch for the utils/reposync.sh script
-RUN yum install -y dnf dnf-plugins-core patch python3 rsync && \
+RUN yum install -y dnf dnf-plugins-core patch python-requests python3 rsync && \
     python3 -m pip install -U pip && \
     python3 -m pip install cpp-coveralls
 
