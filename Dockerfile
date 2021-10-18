@@ -53,6 +53,8 @@ RUN yum install -y dnf dnf-plugins-core patch python-requests python3 rsync && \
 
 # Copy the entrypoint
 ADD contrib/bin/* /usr/local/bin/
+# Copy Duffy-specific ssh client config
+ADD contrib/config/duffy_ssh_config /etc/ssh/ssh_config
 
 # Fix & drop privileges
 RUN chown -R 1001:0 $HOME && chmod -R g+rw $HOME
